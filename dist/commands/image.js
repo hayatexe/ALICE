@@ -12,8 +12,10 @@ export async function execute(interaction) {
     const model = interaction.options.getString("model") ?? process.env.OPENAI_IMAGE_MODEL ?? "dall-e-3";
     await interaction.deferReply();
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-    const result = await openai.images.generate({ model, prompt, size: `${size}x${size}` });
-    const b64 = result.data[0]?.b64_json;
+    const sizeStr = size === 256 ? "256x256" : size === 512 ? "512x512" : "1024x1024";
+    const result = await openai.images.generate({ model, prompt, size: sizeStr });
+    const data = result.data ?? [];
+    const b64 = data[0]?.b64_json ?? null;
     if (!b64) {
         await interaction.editReply("Failed to generate image.");
         return;
