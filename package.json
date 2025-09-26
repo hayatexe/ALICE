@@ -1,0 +1,38 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000A\u0000L\u0000I\u0000C\u0000E\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "register": "cross-env REGISTER_COMMANDS=1 tsx src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hayatexe/ALICE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hayatexe/ALICE/issues"
+  },
+  "homepage": "https://github.com/hayatexe/ALICE#readme",
+  "type": "module",
+  "dependencies": {
+    "anthropic": "^0.0.0",
+    "discord.js": "^14.22.1",
+    "dotenv": "^17.2.2",
+    "openai": "^5.23.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "cross-env": "^10.0.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.2"
+  }
+}
