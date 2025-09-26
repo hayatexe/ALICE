@@ -10,7 +10,7 @@ async function ensureDir(dir: string): Promise<void> {
 	await fs.mkdir(dir, { recursive: true });
 }
 
-async function readJson<T>(filePath: string, schema: z.ZodSchema<T>): Promise<T | null> {
+async function readJson<S extends z.ZodTypeAny>(filePath: string, schema: S): Promise<z.infer<S> | null> {
 	try {
 		const buf = await fs.readFile(filePath, "utf8");
 		const json = JSON.parse(buf);

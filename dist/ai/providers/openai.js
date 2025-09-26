@@ -12,7 +12,7 @@ export class OpenAiProvider {
             model,
             messages: messages.map((m) => ({ role: m.role, content: m.content })),
             temperature: options?.temperature ?? 0.7,
-            max_tokens: options?.maxTokens,
+            max_tokens: options?.maxTokens ?? null,
         });
         return response.choices[0]?.message?.content ?? "";
     }

@@ -57,10 +57,14 @@ export async function execute(interaction: ChatInputCommandInteraction): Promise
 		const mute = interaction.options.getNumber("mute") ?? undefined;
 		const ban = interaction.options.getNumber("ban") ?? undefined;
 		const muteMinutes = interaction.options.getInteger("mute_minutes") ?? undefined;
-		await store.setModeration(interaction.guildId, channel.id, {
-			thresholds: { warn: warn ?? 0.5, mute: mute ?? 0.75, ban: ban ?? 0.95 },
-			muteDurationMinutes: muteMinutes,
-		});
+		const update: any = {};
+		if (warn !== undefined || mute !== undefined || ban !== undefined) {
+			update.thresholds = { warn: warn ?? 0.5, mute: mute ?? 0.75, ban: ban ?? 0.95 };
+		}
+		if (muteMinutes !== undefined) {
+			update.muteDurationMinutes = muteMinutes;
+		}
+		await store.setModeration(interaction.guildId, channel.id, update);
 		await interaction.reply({ ephemeral: true, content: `Updated thresholds for <#${channel.id}>.` });
 		return;
 	}

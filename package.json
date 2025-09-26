@@ -29,6 +29,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.64.0",
     "@types/node": "^24.5.2",
     "cross-env": "^10.0.0",
     "ts-node": "^10.9.2",
